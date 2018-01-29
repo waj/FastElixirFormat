@@ -1,0 +1,6 @@
+[
+  {
+    "caption": "Fast Elixir Format: Format this file",
+    "command": "fast_elixir_format"
+  }
+]
