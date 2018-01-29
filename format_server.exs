@@ -47,7 +47,7 @@ defmodule FormatServer do
       String.myers_difference(code, new_code)
       |> write_diff
     catch
-      :exit, error ->
+      :exit, _error ->
         :error
     after
       File.rm!(temp_file)
