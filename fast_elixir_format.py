@@ -2,7 +2,7 @@ import sublime
 import sublime_plugin
 import subprocess
 import os
-from os.path import dirname, realpath
+from os.path import dirname, realpath, isfile
 import http.client
 import base64
 
@@ -65,6 +65,9 @@ class FastElixirFormatCommand(sublime_plugin.TextCommand):
   def is_enabled(self):
     caret = self.view.sel()[0].a
     syntax_name = self.view.scope_name(caret)
+    folder = self.view.window().folders()[0]
+    if not isfile(os.path.join(folder, ".formatter.exs")):
+      return False
     return "source.elixir" in syntax_name
 
   def run(self, edit):
