@@ -30,7 +30,7 @@ class FormatServer:
   def execute(self, text):
     try:
       conn = http.client.HTTPConnection("localhost", self.port)
-      conn.request("POST", "/", text)
+      conn.request("POST", "/", text.encode('UTF-8'))
       response = conn.getresponse()
       if response.status != 200:
         return False
